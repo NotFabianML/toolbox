@@ -1,4 +1,10 @@
 {
-    "Welcome to React": "Welcome to React and react-i18next",
-    "greeting": "Hello and Bye"
+    "header": "Every tool you need, at your fingertips.",
+    "ocrImage": {
+        "title": "OCR Image",
+        "description": "Extract text from images in seconds.",
+        "description2": "Extracts text from one or more images in format (.jpg - .png) to a txt file.",
+        "dragAndDrop": "or drop your images here",
+        "selectImage": "Select images"
+    }
 }
