@@ -1,0 +1,15 @@
+{
+    "title": "OCR IMAGE",
+    "buttons": {
+        "apply": "Apply OCR",
+        "download": "Download .txt"
+    },
+    "toast": {
+        "copy_success": "Copied to clipboard!",
+        "copy_error": "Error copying to clipboard!",
+        "download_success": "File downloaded!",
+        "download_error": "Error downloading file!",
+        "apply_success": "OCR applied!",
+        "apply_error": "Error applying OCR!"
+    }       
+}

@@ -25,7 +25,7 @@ const Image = (props: { id: number; text: string; onDelete: () => void }) => {
             <div>
 
             <button onClick={props.onDelete}>
-                <img className="w-[15px] h-[15px] bg-black" alt="Icon close" src={closeX} />
+                <img className="w-[15px] h-[15px]" alt="Icon close" src={closeX} />
             </button>
             </div>
         </div>
