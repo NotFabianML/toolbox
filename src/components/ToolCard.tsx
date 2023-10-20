@@ -6,7 +6,7 @@ const ToolCard = (props: { icon: string; name: string; description: string; }) =
     const { icon, name, description } = props;
     return (
         <>
-            <Link to="/ocr-image">
+            <Link to="/processing-image">
                 <div className="toolcard">
                     <img
                         className="relative"
