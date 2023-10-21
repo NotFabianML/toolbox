@@ -27,8 +27,8 @@ const ImagesContainer = (props: { imageArray: Array<File>; updateSelectedImages:
             setItems((items) => {
                 const oldIndex = items.findIndex((item) => item.id === active.id);
                 const newIndex = items.findIndex((item) => item.id === over.id);
-                console.log(arrayMove(items, oldIndex, newIndex));
-                props.updateSelectedImages(arrayMove(imageArray, oldIndex, newIndex)); // Llama a la función para actualizar en OcrImage
+                props.updateSelectedImages(arrayMove(imageArray, oldIndex, newIndex));
+                 // Llama a la función para actualizar en OcrImage
                 return arrayMove(items, oldIndex, newIndex);
             });
         }
@@ -38,7 +38,6 @@ const ImagesContainer = (props: { imageArray: Array<File>; updateSelectedImages:
     const handleDeleteImage = (imageToDelete: File) => {
         const updatedImages = imageArray.filter((image) => image !== imageToDelete);
         props.updateSelectedImages(updatedImages);
-        console.log("ELIMINADO");
     };
 
     return (

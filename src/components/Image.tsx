@@ -10,24 +10,25 @@ const Image = (props: { id: number; text: string; onDelete: () => void }) => {
     };
 
     return (
-        <div
-            className="flex w-full h-[35px] items-center justify-between px-[15px] py-[7px] cursor-grab bg-primary rounded-[5px] hover:bg-alternative box draggable"
+        <div className=" flex w-full h-[35px] items-center justify-start pr-[15px] py-[7px] cursor-grab bg-primary rounded-[5px] hover:bg-alternative active:bg-alternative"
             ref={setNodeRef}
-            {...attributes}
-            {...listeners}
             data-id={props.id}
             data-testid="image-container"
             style={styles}
         >
-            <p className="w-10/12 h-6 [font-family:'Inter-Regular',Helvetica] font-normal text-txt-color text-[14px] select-none truncate hover:text-clip">
-                {props.text}
-            </p>
-            <div>
-
-            <button onClick={props.onDelete}>
-                <img className="w-[15px] h-[15px]" alt="Icon close" src={closeX} />
-            </button>
+            <div
+                className="flex w-full h-[35px] items-center justify-between px-[15px] py-[7px] cursor-grab rounded-[5px] hover:bg-alternative active:bg-alternative"
+                {...listeners}
+                {...attributes}
+            >
+                <p className="w-11/12 h-6 [font-family:'Inter-Regular',Helvetica] font-normal text-txt-color text-[14px] select-none truncate hover:text-clip" >
+                    {props.text}
+                </p>
             </div>
+
+            <button className="select-none mr-1" onClick={props.onDelete}>
+                <img className="w-[18px] h-[18px]" alt="Icon close" src={closeX} />
+            </button>
         </div>
     );
 };

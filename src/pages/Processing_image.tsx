@@ -28,6 +28,9 @@ const OcrImage = () => {
       toast.error(t('toast.copy_error'), {
         position: 'top-left',
         duration: 2000,
+        style: {
+          width: 'fit-content'
+        },
       });
 
     } else {
@@ -35,6 +38,9 @@ const OcrImage = () => {
       toast.success(t('toast.copy_success'), {
         position: 'top-left',
         duration: 2000,
+        style: {
+          width: 'fit-content'
+        },
       });
     }
   };
@@ -46,6 +52,9 @@ const OcrImage = () => {
       toast.error(t('toast.download_error'), {
         position: 'top-left',
         duration: 2000,
+        style: {
+          width: 'fit-content'
+        },
       });
     
     } else {
@@ -59,6 +68,7 @@ const OcrImage = () => {
   const handleImageUpload = (event: any) => {
     const images = event.target.files;
     setSelectedImages([...selectedImages, ...images]);
+    console.log(selectedImages);
   };
 
   // Función para actualizar el estado de selectedImages
@@ -74,6 +84,14 @@ const OcrImage = () => {
   // Función para reconocer el texto de las imágenes
   const recognizeText = async () => {
     if (selectedImages.length > 0) {
+      toast.loading(t('toast.apply_loading'), {
+        position: 'top-left',
+        duration: 3000,
+        style: {
+          width: 'fit-content'
+        },
+      });
+
       const promises = selectedImages.map(async image => {
         const result = await Tesseract.recognize(image);
         return result.data.text;
@@ -85,12 +103,18 @@ const OcrImage = () => {
       toast.success(t('toast.apply_success'), {
         position: 'top-left',
         duration: 2000,
+        style: {
+          width: 'fit-content'
+        },
       });
 
     } else {
       toast.error(t('toast.apply_error'), {
         position: 'top-left',
         duration: 2000,
+        style: {
+          width: 'fit-content'
+        },
       });
     }
   };
@@ -156,4 +180,4 @@ const OcrImage = () => {
   )
 }
 
-export default OcrImage;
+export default OcrImage

@@ -9,6 +9,7 @@
         "copy_error": "Error copying to clipboard!",
         "download_success": "File downloaded!",
         "download_error": "Error downloading file!",
+        "apply_loading": "Applying OCR...",
         "apply_success": "OCR applied!",
         "apply_error": "Error applying OCR!"
     }       

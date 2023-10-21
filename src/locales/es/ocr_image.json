@@ -9,6 +9,7 @@
         "copy_error": "Error al copiar al portapapeles!",
         "download_success": "Descargado!",
         "download_error": "Error al descargar el archivo!",
+        "apply_loading": "Aplicando OCR...",
         "apply_success": "OCR aplicado!",
         "apply_error": "Error al aplicar OCR!"
     }

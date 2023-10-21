@@ -7,7 +7,7 @@ process.env.VITE_PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
 const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
-const isDev = process.env.NODE_ENV !== 'development';
+const isDev = process.env.NODE_ENV === 'development';
 const isMac = process.platform === 'darwin';
 
 function createMainWindow() {
