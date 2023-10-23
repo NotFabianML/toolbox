@@ -7,9 +7,10 @@ import { useTranslation } from 'react-i18next'
 import Button from "../components/Button"
 import ImagesContainer from "../components/ImagesContainer"
 import { copyClipboard, addSign, trashCan } from "../assets/icons";
+import { Link } from 'react-router-dom';
 
 const OcrImage = () => {
-  const { t, i18n } = useTranslation("ocrimage");
+  const { t } = useTranslation("ocrimage");
 
   const [recognizedText, setRecognizedText] = useState('');
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
@@ -56,7 +57,7 @@ const OcrImage = () => {
           width: 'fit-content'
         },
       });
-    
+
     } else {
       const blob = new Blob([recognizedText], { type: "text/plain" });
       saveAs(blob);
@@ -78,6 +79,7 @@ const OcrImage = () => {
 
   // Función para borrar todas las imágenes
   const handleDeleteAllImages = () => {
+    setRecognizedText('');
     setSelectedImages([]);
   };
 
@@ -120,35 +122,41 @@ const OcrImage = () => {
   };
 
   return (
-    <div className="bg-primary flex flex-row">
-      <div className="flex flex-col items-center justify-center m-auto w-[360px]">
-        <div className="flex flex-col items-start w-[518px] h-[478px] p-4 mb-10 border-4 border-solid rounded-[4px] border-secondary">
-          <textarea
-            className="bg-primary w-full h-full [font-family:'Inter-Regular',Helvetica] font-normal text-txt-color text-[16px] resize-none focus:outline-none"
-            value={recognizedText}
-            onChange={(e) => setRecognizedText(e.target.value)}
-          />
-
-          <button className="flex self-end p-2" onClick={copyToClipboard}>
-            <img className="w-[29px] h-[31px]"
-              alt="Copy to clipboard"
-              src={copyClipboard}
+    <>
+      <div className="bg-primary flex flex-row">
+        <div className="flex flex-col items-center justify-center m-auto mt-2 w-auto">
+          <Link to="/" className='flex self-start mb-3'>
+            <div className="[font-family:'Inter-Bold',Helvetica] font-bold text-txt-color text-[32px] text-left ">
+              ToolBox
+            </div>
+          </Link>
+          <div className="flex flex-col items-start w-[518px] h-[478px] p-4 mb-10 border-4 border-solid rounded-[4px] border-secondary">
+            <textarea
+              className="bg-primary w-full h-full [font-family:'Inter-Regular',Helvetica] font-normal text-txt-color text-[16px] resize-none focus:outline-none"
+              value={recognizedText}
+              onChange={(e) => setRecognizedText(e.target.value)}
             />
-          </button>
-          <Toaster visibleToasts={1} />
+
+            <button className="flex self-end p-2" onClick={copyToClipboard}>
+              <img className="w-[29px] h-[31px]"
+                alt="Copy to clipboard"
+                src={copyClipboard}
+              />
+            </button>
+            <Toaster visibleToasts={1} />
+          </div>
+
+          <Button text={t('buttons.download')} handleClick={handleDownload} />
         </div>
 
-        <Button text={t('buttons.download')} handleClick={handleDownload}/>
-      </div>
+        <div className="flex flex-col w-[360px] h-screen items-center bg-secondary gap-3 px-16 py-2">
+          <h2 className="[font-family:'Inter-Bold',Helvetica] font-bold text-txt-color text-[32px] text-center">
+            {t('title')}
+          </h2>
 
-      <div className="flex flex-col w-[360px] h-screen items-center bg-secondary gap-3 px-16 py-2">
-        <h2 className="[font-family:'Inter-Bold',Helvetica] font-bold text-txt-color text-[32px] text-center">
-          {t('title')}
-        </h2>
+          <ImagesContainer imageArray={selectedImages} updateSelectedImages={updateSelectedImages} />
 
-        <ImagesContainer imageArray={selectedImages} updateSelectedImages={updateSelectedImages} />
-
-        <div className='flex flex-row gap-4'>
+          <div className='flex flex-row gap-5 mt-2 mb-3'>
             <button onClick={handleButtonClick}>
               <img className="w-[29px] h-[31px]"
                 alt="add images"
@@ -164,18 +172,19 @@ const OcrImage = () => {
               multiple
             />
 
-          <button onClick={handleDeleteAllImages}>
-            <img className="w-[26px] h-[38px]"
-              alt="delete all images"
-              src={trashCan}
-            />
-          </button>
+            <button onClick={handleDeleteAllImages}>
+              <img className="w-[26px] h-[38px]"
+                alt="delete all images"
+                src={trashCan}
+              />
+            </button>
+          </div>
+
+          <Button text={t('buttons.apply')} handleClick={recognizeText} />
         </div>
 
-        <Button text={t('buttons.apply')} handleClick={recognizeText}/>
       </div>
-
-    </div>
+    </>
 
   )
 }

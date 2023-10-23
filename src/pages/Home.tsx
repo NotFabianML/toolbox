@@ -3,7 +3,7 @@ import { ocrImage } from "../assets/icons";
 import { useTranslation } from 'react-i18next'
 
 const Home = () => {
-    const { t, i18n } = useTranslation("global");
+    const { t } = useTranslation("global");
 
     return (
         <>

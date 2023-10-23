@@ -1,18 +1,26 @@
 {
   "name": "toolbox-app",
+  "productName": "Toolbox",
+  "description": "Toolbox is a desktop app for managing your tools.",
+  "author": "Fabian Miranda",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "main": "dist-electron/main.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.0.8",
     "@dnd-kit/modifiers": "^6.0.1",
     "@dnd-kit/sortable": "^7.0.2",
     "@dnd-kit/utilities": "^3.2.1",
+    "electron-squirrel-startup": "^1.0.0",
     "file-saver": "^2.0.5",
     "i18next": "^23.5.1",
     "react": "^18.2.0",
@@ -23,6 +31,13 @@
     "tesseract.js": "^5.0.2"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
+    "@electron-forge/maker-deb": "^6.4.2",
+    "@electron-forge/maker-rpm": "^6.4.2",
+    "@electron-forge/maker-squirrel": "^6.4.2",
+    "@electron-forge/maker-zip": "^6.4.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
+    "@electron-forge/publisher-github": "^6.4.2",
     "@types/file-saver": "^2.0.6",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
@@ -31,7 +46,6 @@
     "@vitejs/plugin-react": "^4.0.4",
     "autoprefixer": "^10.4.16",
     "electron": "^26.1.0",
-    "electron-builder": "^24.6.4",
     "eslint": "^8.48.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
@@ -42,5 +56,11 @@
     "vite-plugin-electron": "^0.14.0",
     "vite-plugin-electron-renderer": "^0.14.5"
   },
-  "main": "dist-electron/main.js"
+  "build": {
+    "appId": "com.FabianML.toolbox",
+    "files": [
+      "dist",
+      "dist-electron"
+    ]
+  }
 }
