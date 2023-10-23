@@ -36,7 +36,8 @@ module.exports = {
       config: {
         repository: {
           owner: 'NotFabianML',
-          name: 'toolbox'
+          name: 'toolbox',
+          authToken: "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",
         },
         prerelease: false,
         draft: true
